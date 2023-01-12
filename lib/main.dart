@@ -1,13 +1,16 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mgy4u/app/routes/app_pages.dart';
 import 'package:mgy4u/app/routes/app_routes.dart';
 import 'app/binding/binding.dart';
-import 'app/controllers/fb_controller.dart';
+import 'app/controllers/controller.dart';
 import 'app/translation/app_translations.dart';
 import 'app/views/splash.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(const MyApp());
 }
 

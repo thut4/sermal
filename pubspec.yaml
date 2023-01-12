@@ -39,6 +39,10 @@ dependencies:
   external_app_launcher: ^3.1.0
   flutter_phone_direct_caller:
   shared_preferences: ^2.0.15
+  cloud_firestore: any
+  firebase_core: any
+  firebase_auth: ^3.11.2
+  google_sign_in: ^5.4.2
 
 dev_dependencies:
   flutter_test:
@@ -90,7 +94,6 @@ flutter:
     - family: Pyidaungsu
       fonts:
         - asset: fonts/Pyidaungsu.ttf
-       
 
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages

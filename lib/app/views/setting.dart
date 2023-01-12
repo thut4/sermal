@@ -28,54 +28,59 @@ class Setting extends GetView {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Row(
-        children: [
-          Obx(
-            () => Text(
-              '${_isLightTheme.value ? 'Light' : 'Dark'} Mode',
+      body: SafeArea(
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Obx(
+              () => Text(
+                '${_isLightTheme.value ? 'Light' : 'Dark'} Mode',
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+              ),
             ),
-          ),
-          ObxValue(
-            (data) => Switch(
-              value: _isLightTheme.value,
-              onChanged: (val) {
-                _isLightTheme.value = val;
-                Get.changeThemeMode(
-                  _isLightTheme.value ? ThemeMode.light : ThemeMode.dark,
-                );
-                _saveThemeStatus();
-              },
+            ObxValue(
+              (data) => Switch(
+                value: _isLightTheme.value,
+                onChanged: (val) {
+                  _isLightTheme.value = val;
+                  Get.changeThemeMode(
+                    _isLightTheme.value ? ThemeMode.light : ThemeMode.dark,
+                  );
+                  _saveThemeStatus();
+                },
+              ),
+              false.obs,
             ),
-            false.obs,
-          ),
-          // TextButton(
-          //     onPressed: () {
-          //       if (controller.selectedLang == "English") {
-          //         controller.selectedLang = "မြန်မာ";
-          //         controller.changeLocale("မြန်မာ");
-          //       } else {
-          //         controller.selectedLang = "English";
-          //         controller.changeLocale("English");
-          //       }
-          //     },
-          //     child: controller.selectedLang == "English"
-          //         ? Column(
-          //             mainAxisAlignment: MainAxisAlignment.center,
-          //             children: [
-          //               Text("မြန်မာဘာသာသို့ပြောင်းမည်",
-          //                   style: TextStyle(color: Colors.black)),
-          //               Text("English is your current language")
-          //             ],
-          //           )
-          //         : Column(
-          //             mainAxisAlignment: MainAxisAlignment.center,
-          //             children: [
-          //               Text("အင်္ဂလိပ်ဘာသာသို့ပြောင်းမည်",
-          //                   style: TextStyle(color: Colors.black)),
-          //               Text("Myanmar is your current language")
-          //             ],
-          //           )),
-        ],
+            // TextButton(
+            //     onPressed: () {
+            //       if (controller.selectedLang == "English") {
+            //         controller.selectedLang = "မြန်မာ";
+            //         controller.changeLocale("မြန်မာ");
+            //       } else {
+            //         controller.selectedLang = "English";
+            //         controller.changeLocale("English");
+            //       }
+            //     },
+            //     child: controller.selectedLang == "English"
+            //         ? Column(
+            //             mainAxisAlignment: MainAxisAlignment.center,
+            //             children: [
+            //               Text("မြန်မာဘာသာသို့ပြောင်းမည်",
+            //                   style: TextStyle(color: Colors.black)),
+            //               Text("English is your current language")
+            //             ],
+            //           )
+            //         : Column(
+            //             mainAxisAlignment: MainAxisAlignment.center,
+            //             children: [
+            //               Text("အင်္ဂလိပ်ဘာသာသို့ပြောင်းမည်",
+            //                   style: TextStyle(color: Colors.black)),
+            //               Text("Myanmar is your current language")
+            //             ],
+            //           )),
+          ],
+        ),
       ),
     );
   }

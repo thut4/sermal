@@ -4,7 +4,6 @@ import 'package:get/get.dart';
 import '../beverage_pages/drink_page.dart';
 
 import '../foods_pages/food_page.dart';
-import '../home.dart';
 import '../setting.dart';
 import 'dashboard_controller.dart';
 

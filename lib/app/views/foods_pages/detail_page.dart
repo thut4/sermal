@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_phone_direct_caller/flutter_phone_direct_caller.dart';
 
 import 'package:get/get_state_manager/get_state_manager.dart';
-import 'package:mgy4u/app/controllers/fb_controller.dart';
+import 'package:mgy4u/app/controllers/controller.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
 import '../../data/model/info.dart';
@@ -14,7 +14,7 @@ class DetailPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    return GetBuilder<FbController>(builder: (controller) {
+    return GetBuilder<Controller>(builder: (controller) {
       return Scaffold(
           body: SafeArea(
         child: SingleChildScrollView(
@@ -49,8 +49,9 @@ class DetailPage extends StatelessWidget {
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceEvenly,
                                   children: [
-                                    ElevatedButton(
-                                        child: Text('Facebook'),
+                                    ElevatedButton.icon(
+                                        label: Text('Facebook'),
+                                        icon: Icon(Icons.facebook_outlined),
                                         onPressed: () async {
                                           String fbProtocolUrl = pages.pageId;
                                           String fallbackUrl = pages.pageUrl;
@@ -74,12 +75,13 @@ class DetailPage extends StatelessWidget {
                                             //await launch(fallbackUrl, forceSafariVC: false);
                                           }
                                         }),
-                                    ElevatedButton(
+                                    ElevatedButton.icon(
                                         onPressed: () async {
                                           await FlutterPhoneDirectCaller
                                               .callNumber(pages.phone);
                                         },
-                                        child: Text('Call Now'))
+                                        icon: Icon(Icons.phone),
+                                        label: Text('Call'))
                                   ],
                                 )
                               ])),
@@ -106,7 +108,7 @@ class DetailPage extends StatelessWidget {
                         ),
                         Row(
                           children: [
-                            Text(pages.location),
+                            Text(pages.address),
                             // RichText(
                             //     text: TextSpan(children: [
                             //   TextSpan(
@@ -122,13 +124,6 @@ class DetailPage extends StatelessWidget {
                             SizedBox(
                               width: 20,
                             ),
-                            Expanded(
-                                child: Image.asset(
-                              pages.detailImage,
-                              fit: BoxFit.fitHeight,
-                              width: 100,
-                              height: 200,
-                            ))
                           ],
                         ),
                       ],
